@@ -1,4 +1,10 @@
-# Bootstrapping talos
+# Setting up a Talos Linux kubernetes bare metal cluster
+
+## Bootstrapping talos 
+
+TBD
+
+## Configuring Talos and kubernetes
 
 ```sh
 export PRIMARY=10.0.96.41
@@ -19,4 +25,11 @@ for NODE in "${CP_NODES[@]}"; {
 for NODE in "${WK_NODES[@]}"; {
   talosctl apply-config --insecure -n $NODE  --file worker.yaml
 }
+```
+
+## Bootstrapping flux
+
+```sh
+
+flux bootstrap github --owner=thejimnicholson --repository=talos-project  --branch=main --path=apps
 ```
