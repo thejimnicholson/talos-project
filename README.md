@@ -51,6 +51,16 @@ for NODE in "${WK_NODES[@]}"; {
 First, export your GITHUB_TOKEN. Use a token with commit privileges against your github repository. Or use a different git server, see the flux documentation. 
 
 ```sh
-
 flux bootstrap github --owner=thejimnicholson --repository=talos-project  --branch=main --path=apps
 ```
+
+Once flux is installed, deploying additional services to kubernetes is handled via flux.
+
+This currently includes:
+
+- metallb (an implementation of a L2 load balancer for external access to Kubernetes services)
+- nfs-external-subdir-provisioner (Creates a storage class that is backed by an NFS server, and manages space allocations within that NFS mount.)
+- nginx ingress controller
+- prometheus and grafana
+- Mitt Dewald's secret generator (generates secrets with values based on a provided spec, useful for secrets only needed within the cluster.)
+- Bitnami's sealed secrets controller (Creates secrets from CRDS created using cluster-specific keys, which are safe to store in source control because the values can only be decrypted if you have the cluster-specific key
