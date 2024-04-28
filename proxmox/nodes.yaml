@@ -1,0 +1,62 @@
+---
+- name: Provision k3s cluster nodes
+  hosts:
+    - localhost
+  gather_facts: no
+  tasks:
+
+
+    - name: Clone host image
+      community.general.proxmox_kvm:
+        api_host: "{{ proxmox_api_host }}"
+        api_user: "{{ proxmox_user }}"
+        api_password: "{{ proxmox_pw }}"        
+        autostart: true
+        clone: "{{ cloudinit_img }}"
+        name: "{{ item }}"
+        node: pve
+        target: "{{ hostvars[item].node }}"
+        storage: ceph_storage
+        format: qcow2
+        newid: "{{ hostvars[item].id }}"
+        timeout: 500
+      with_inventory_hostnames:
+        - primary
+        - control_plane
+        - workers        
+    - name: Update clones
+      community.general.proxmox_kvm:
+        update: yes
+        node: "{{ hostvars[item].node }}"
+        api_host: "{{ proxmox_api_host }}"
+        api_user: "{{ proxmox_user }}"
+        api_password: "{{ proxmox_pw }}"      
+        memory: "{{ hostvars[item].mem }}"
+        ciuser: admin
+        cipassword: "{{ proxmox_pw }}"
+        cores: 4
+        sshkeys: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC0Lk7zShZhujYeAnqorxZZCUJbZWWzf74cyAXRCGFeqyUvzOHuc/M3s0dmEqWRQCnKKdRAcAeBuya8dNyXwlTbWGTMbrObesPb0rHgLLXUfPbDH1km9QpVufjpuhbUtBN0iSa/1n3vKeMvrQj3ekUvl6nRtcLPHY0H4RswOJSpEzpvHK8S4YxdSoBV0z9KVB3/nS45WsqY45pD75epEjgaEhxyiJkf2fy5VkEB0+ZRMWs4uv/emwXq1hparkh5618Qap5qTpxI0kG0gXjupYc9HYe3oqHtxXsqrN3G/wEX6bVsbxNUdU5WMlqT88TkbRcju7UI7UhNcBezXaeT/WlJZGGM2spEHpk7DBC8Td6t09vCDQzRU694p6/hMfOUS3aMSdcIIU9wOdqXaXgFW2ugUxjQV0L0EowCxX8wJpPmxECs+svf7cCPYZVyF+R4MKHHx2mW/GtHYceAkQvIMfjPg2ZlKNOWGAJHBjjnLlAdXWJf77+FH5q3QCQshEW4loe/7/cd3AUGplYtHKxBaGYJS8YRDDmAE/TBZsm3ICaGCIUtEEsIBrSPR+f6WFU5fMIOh82735FGMI1rO4rNkFJ3ZBgwsgurY1yKrtP8yrTKELF0noycWw6DYHrwShXDFKjIlut5w3L3tOdlL6gheTfZqhSwDNZXm/3H76BfOUpxEQ== jim@DESKTOP-PP2J3PP'
+        vmid: "{{ hostvars[item].id }}"
+        nameservers:
+          '10.0.96.30'
+        net:
+          net0: 'virtio,bridge=vmbr0'
+        ipconfig:
+          ipconfig0: "ip={{ hostvars[item].ansible_host }}/24,gw=10.0.96.1"
+      with_inventory_hostnames:
+        - primary
+        - control_plane
+        - workers 
+    - name: Start clones
+      community.general.proxmox_kvm:
+        node: "{{ hostvars[item].node }}"
+        api_host: "{{ proxmox_api_host }}"
+        api_user: "{{ proxmox_user }}"
+        api_password: "{{ proxmox_pw }}"         
+        update: yes
+        vmid: "{{ hostvars[item].id }}"
+        state: started
+      with_inventory_hostnames:
+        - primary
+        - control_plane
+        - workers 
