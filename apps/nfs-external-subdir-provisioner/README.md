@@ -1,4 +1,4 @@
-# Deploy nfs-subdir-external-provisoner via flux 
+# Deploy nfs-subdir-external-provisoner via flux
 
 This was created as follows:
 
