@@ -43,6 +43,8 @@ spec:
         failurePolicy: Ignore
     prometheus:
       prometheusSpec:
+        podMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           accessModes:
           - ReadWriteOnce
@@ -50,6 +52,10 @@ spec:
             requests:
               storage: 10Gi
           storageClassName: nfs-client
+    prometheus-node-exporter:
+      hostRootFsMount:
+        enabled: false 
+        mountPropagation: 'HostToContainer'
     thanosRuler:
       thanosRullerSpec:
         storage:
