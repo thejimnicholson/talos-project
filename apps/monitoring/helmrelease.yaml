@@ -5,6 +5,12 @@ metadata:
   name: kube-prometheus-stack
   namespace: flux-system
 spec:
+  timeout: 10m
+  install:
+    disableWait: true
+    createNamespace: true
+  upgrade:
+    disableWait: true
   chart:
     spec:
       chart: kube-prometheus-stack
@@ -13,12 +19,12 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-  install:
-    createNamespace: true
   interval: 10m0s
   releaseName: kube-prometheus-stack
   targetNamespace: monitoring
   values:
+    kubeEtcd:
+      enabled: false
     alertmanager:
       alertmanagerSpec:
         storage:
