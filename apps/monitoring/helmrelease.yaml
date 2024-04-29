@@ -38,6 +38,9 @@ spec:
         - kubernetes.io/pvc-protection
         size: 50Gi
         storageClassName: nfs-client
+    prometheusOperator:
+      admissionWebhooks:
+        failurePolicy: Ignore
     prometheus:
       prometheusSpec:
         storageSpec:
