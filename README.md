@@ -6,7 +6,7 @@ You will need the following installed on the system you will be working from.
 
 - talosctl
 - kubectl
-- 
+- flux
 
 ## Bootstrapping talos 
 
@@ -63,4 +63,4 @@ This currently includes:
 - nginx ingress controller
 - prometheus and grafana
 - Mitt Dewald's secret generator (generates secrets with values based on a provided spec, useful for secrets only needed within the cluster.)
-- Bitnami's sealed secrets controller (Creates secrets from CRDS created using cluster-specific keys, which are safe to store in source control because the values can only be decrypted if you have the cluster-specific key
+- Bitnami's sealed secrets controller (Creates secrets from CRDS created using cluster-specific keys, which are safe to store in source control because the values can only be decrypted if you have the cluster-specific key.)
