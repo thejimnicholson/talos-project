@@ -1,0 +1,70 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: '55.8.*'
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+  install:
+    createNamespace: true
+  interval: 10m0s
+  releaseName: kube-prometheus-stack
+  targetNamespace: monitoring
+  values:
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests: 
+                  storage: 50Gi
+              storageClassName: nfs-client
+    grafana:
+      persistence:
+        accessModes:
+        - ReadWriteOnce
+        enabled: true
+        finalizers:
+        - kubernetes.io/pvc-protection
+        size: 50Gi
+        storageClassName: nfs-client
+    prometheusOperator:
+      admissionWebhooks:
+        failurePolicy: Ignore
+    prometheus:
+      prometheusSpec:
+        podMonitorSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        storageSpec:
+          accessModes:
+          - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: nfs-client
+    prometheus-node-exporter:
+      hostRootFsMount:
+        enabled: false 
+        mountPropagation: 'HostToContainer'
+    thanosRuler:
+      thanosRullerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+              - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 50Gi
+              storageClassName: nfs-client
