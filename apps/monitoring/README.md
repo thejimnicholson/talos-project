@@ -4,6 +4,45 @@ We are using prometheus and grafana from the community helm chart. It comes with
 
 For our installation, we are overriding the charts' storage configuration so that we use persistent storage.
 
+```yaml
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: nfs-client
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests: 50Gi
+grafana:
+  persistence:
+    enabled: true
+    storageClassName: nfs-client
+    accessModes: ["ReadWriteOnce"]
+    size: 50Gi
+    finalizers:
+      - kubernetes.io/pvc-protection
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      storageClassName: nfs-client
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 10Gi
+thanosRuler:
+  thanosRullerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: nfs-client
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 50Gi
+
+```
+
 To see what we can overide, grab the values from the repository:
 
 ```sh
