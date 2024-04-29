@@ -11,7 +11,7 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: sealed-secrets
+        name: bitnami-sealed-secrets
       version: '>=1.15.0-0'
   install:
     crds: Create
