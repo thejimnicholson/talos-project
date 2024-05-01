@@ -11,9 +11,9 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: cloudnative-pg
+        name: cnpg
   install:
     createNamespace: true
-  interval: 1m0s
+  interval: 10m0s
   releaseName: cnpg
   targetNamespace: cnpg-system
