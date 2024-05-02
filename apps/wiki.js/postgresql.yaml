@@ -1,0 +1,11 @@
+metadata:
+  name: wiki-db
+  namespace: wiki
+spec:
+  instances: 3
+  bootstrap:
+    initdb:
+      database: wiki-db
+  storage:
+    storageClass: nfs-client
+    size: 5Gi
