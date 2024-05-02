@@ -17,13 +17,13 @@ spec:
   interval: 10m0s
   releaseName: wiki-js
   targetNamespace: wiki
-values:
-  ingress:
-    enabled: false
-  postgresql:
-    enabled: false
-    postgresqlDatabase: wiki-db
-    postgresqlHost: wiki-db-rw
-    postgresqlUser: wiki-db
-    existingSecret: wiki-db-app
-    existingSecretKey: password
+  values:
+    ingress:
+      enabled: false
+    postgresql:
+      enabled: false
+      postgresqlDatabase: wiki-db
+      postgresqlHost: wiki-db-rw
+      postgresqlUser: wiki-db
+      existingSecret: wiki-db-app
+      existingSecretKey: password
