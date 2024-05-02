@@ -1,0 +1,20 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  annotations:
+    sealedsecrets.bitnami.com/cluster-wide: "true"
+  creationTimestamp: null
+  name: aws-route53-creds
+  namespace: cert-manager
+spec:
+  encryptedData:
+    AWS_ACCESS_KEY: AgCNHAx/+x18tkdQR/og2PTPTN7RGe4lgNfZaBUM/N/QoGVHuGG/IrXj3leJy5NrhgY5PAwwTULmf94nhTn+/38k3N4YqVfynEhOd4gTxV3EdwnNIXTZepSWaIP/VlQ47pDSzLkRuX/QrAB4CtlwAyc70+6Z4+JXF+4g94RV9yl4/V5m6eskdXalOwMTYSaoG+WzO8xvunUgLYHadAytys1TcH4k9gyVHbSQj/gBukPTIph1xAa2WMPZf1HnMLVWQCPcW4XfvateEJVX4FR7AfUnhSLuv44REnmC8/f+SQT2P0v3BITWyNtf9Rm8bPylLVHVauIps3mThM2BwcNf28Gs1BUOAjBD1aU5H6dNSBitR2ZI5iLiGQ3xhh6OyunJJmc+rqkxWsUXcrQp/EV7XS5Dxx812I3h0WtTxZjdywTCKLc6iD263bTCo+Ot10yJY4LvB/IaRbLY1I8jIPZQ7rhfGt4ouv1oryPoCNtYTmUdMZt4SLUSpzsFzY/t73eShPR13qi4Dv4AAgzMBisnwgGzlhAY6RQ5QcMSS9+0tncOWbcxCFR7YdjyxvMoSWNlHzICvk/QIpW7FvHMjI6OV5qT6Vkb2qBuVMt+svlufOZtOZ6HybHa0F0evRGESWYa7RGdMRSQUq5a5khWf5MjRzmTjdrEIZTlD9gnHqtr0z8H6h89TzdtTHCdEwmVT3KDfV2C/c5Hyw8fayuqFCKnX2bwDKDPKQ==
+    AWS_SECRET_KEY: AgBul8y6j4Jeh4GAcld/xhat57dgubgVCkzn41zxEDs1Oo172W3IJn8/w8uyIemnE0SjhBYZJShYYXYh0KYNRrFqnRbc8MyivDI6KHHhPFxCZyjdz75weNyYDpfDnQlYT1ux62YWNiEzS5zKBGWLr5+zPI0UonJ8TqM+X0quvLC7FIDmCr6H+AE9wJ+mPwN+ToyRzpKOhvgoZG7aVRjOUbiRQuQAWHULXRLp2zw2OGK4TRhz2lNeF9DfVOC75+IzKrClrlj5v9ZCyUB/XBuV04dz5L8cAQbbXjxqslNEFGLywyrqW7Apaad4uU+pY9XCV7PPpaOSe2kmt4l/wgaLOF269w4mIxwa/yWIlggFnyNuQpwnuVHe6w2tje1A01fP6psm8PpPU4ciAN+lxxZ4HVAqmGOCUfkwFo/YdK40KLim270Kf91XPqOlhXbaOcRa6AYz3mImpsr+R/z/I8t5r0Gomf4rBK6d2JgDFoD8eCL5KfVEc0GozNkPvPwQ/zBkDKGpxS1CvmWsIWcirDGMfbFOhY79lowgRNqle0Nk7mtI3tQRHbt5A9cyqiJ4gtH8/dCBynN5RPYIjV/KjGhFwCI3Alq9vlHx8rIbse1lHOHIxRzJw7J2xUrnkX1rhgev+xBLIO0zWg+B8FP8LZk1SlRjSg2lOAsIT0FMIu2KQBOJD1U5mD+ZG296f4nIeHTLIhZpDC/GK74WNUqKZZZMnVvxg/tLtrv7U9MlNAz+GcXVN7lhnEG52t33
+  template:
+    metadata:
+      annotations:
+        sealedsecrets.bitnami.com/cluster-wide: "true"
+      creationTimestamp: null
+      name: aws-route53-creds
+      namespace: cert-manager
