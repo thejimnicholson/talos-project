@@ -1,0 +1,21 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "discord-webhook",
+    "namespace": "flux-system",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "discord-webhook",
+        "namespace": "flux-system",
+        "creationTimestamp": null
+      }
+    },
+    "encryptedData": {
+      "address": "AgAtnNh9o5Wgbs3h2NbzaVkezzpDDIELQIag/nyquGx15LxqSme0Ozc9f0iE+CMVUupWBLR092qcboWZz78U8ltDDLaQw4eOEtGU14gJFmnEmedI7W8weo9EO9yrRI8K/0lCoAssS6o3AGzjWCeagKVXvphybmMjlMwY/70wKhXs8kXtrfDNfsG1uYkI7k6LJ8446A+UvN1H/SvLid0XYeuMON0WONdyZOqDJOg2qreG46OcGE2LbAm37k7bbc1/n+Qux1b2rOihC0z2sw79Lhh9EnNSL46W4tUj0HviDYoAsQJjwlVWUlRwgrgFYbgUp5FVy8LDUbvC+qVMfDNBIVL6V0Hcrb3Gu2EjMxXQIKYLo0YTPO8NMBVRMbZdj0P91aMKqxjLrJd9tUD+9aXogtXdtn+8fN/u7ycLOFnPfHQdwpTPyTtkDqR7664/MGUbc2Wuj7BwbnSaEtAzr0REwiD7NNVDTqQ9BDvlPvgYeiq7ZJxyxCn5s4nRRwPRFPFIOeJ/OVgWev0iDblbbFY2Rom0CrUaLWnRFIQ9iN0rxFMrePfWI+OTq8j7hK0kp/EyEECHU7oRXzG/iNSaJRJLPmO+F2rNW79PBLL3BHiNSyhWCnZoPQZz7Fz9WIxTjsob4ka22T+H3Xeo6DIkPetJyhmraHcmgQpPHhklQ6tKmfuA+tOXJIGisPyLqCY9I/y4es6ft4n36/Pc+f9c5Wo7+RrBEOVFwodlc+V41smRj2ajtJEG0tIrezwqaKtzQ/iIfBqnEasbPETJ34rMRCFXoaIckYahkbQbxdA76mIgaIZb0e7CYRA796TKN6PRixFj38ZE7uazaNctYFPLmjIzHleGx1EbA1RjKl9w"
+    }
+  }
+}

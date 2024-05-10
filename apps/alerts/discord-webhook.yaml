@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata: 
+  name: discord-webhook
+  namespace: flux-system
+stringData:
+  address: <URL GOES HERE> 
+# kubeseal --controller-namespace secret-generator < discord-webhook.yaml > discord-webhook-sealed.yaml
+
