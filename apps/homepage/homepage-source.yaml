@@ -8,5 +8,6 @@ spec:
   interval: 1m0s
   ref:
     branch: main
+  secretRef:
+    name: homepage-credentials
   url: https://git.thejimnicholson.com/homelab/homepage.git
- 
